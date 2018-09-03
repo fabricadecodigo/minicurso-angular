@@ -21,7 +21,7 @@
           <td>{{ produto.descricao }}</td>
           <td>{{ produto.preco | currency:'BRL' }} </td>
           <td><a class="btn btn-primary" title="Editar" routerLink="/produtos/editar/{{ produto.id }}"><i class="fas fa-edit"></i></a></td>
-          <td><a class="btn btn-danger text-light" title="Remover"><i class="fas fa-trash-alt"></i></a></td>
+          <td><a class="btn btn-danger text-light" title="Remover" (click)="remove(produto)"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
       </tbody>
     </table>

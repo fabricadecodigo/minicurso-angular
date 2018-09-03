@@ -1,3 +1,47 @@
-<p>
-  produto-form works!
-</p>
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="produto.nome" name="nome" #nome="ngModel" required minlength="3" />
+        <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="alert alert-danger">
+          <div *ngIf="nome.errors.required">
+            Nome é obrigatório.
+          </div>
+          <div *ngIf="nome.errors.minlength">
+            Nome precisa ter no mínimo 4 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="produto.descricao" name="descricao" #descricao="ngModel" required minlength="30"></textarea>
+        <div *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)" class="alert alert-danger">
+          <div *ngIf="descricao.errors.required">
+            Descrição é obrigatória.
+          </div>
+          <div *ngIf="descricao.errors.minlength">
+            Descrição precisa ter no mínimo 30 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preço</label>
+        <input type="number" class="form-control" [(ngModel)]="produto.preco" name="preco" #preco="ngModel" required />
+        <div *ngIf="preco.invalid && (preco.dirty || preco.touched)" class="alert alert-danger">
+          <div *ngIf="preco.errors.required">
+            Preço é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">Salvar</button>
+      <a routerLink="/produtos" class="btn btn-secondary ml-2">Cancelar</a>
+    </form>
+  </div>
+</div>
