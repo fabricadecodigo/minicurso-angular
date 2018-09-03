@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    {{ title }}
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Preço</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <th scope="row">{{ produto.id }}</th>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.descricao }}</td>
+          <td>{{ produto.preco | currency:'BRL' }} </td>
+          <td><a class="btn btn-primary" title="Editar" routerLink="/produtos/editar/{{ produto.id }}"><i class="fas fa-edit"></i></a></td>
+          <td><a class="btn btn-danger text-light" title="Remover"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a routerLink="/produtos/novo" class="btn btn-primary">Novo produto</a>
+  </div>
+</div>
